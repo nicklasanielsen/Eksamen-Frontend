@@ -17,25 +17,25 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
         <Row>
           <Col md={8}>
             <li>
-              <NavLink exact activeClassName="active" to="/CA3/">
+              <NavLink exact activeClassName="active" to="/exam/">
                 Home
               </NavLink>
             </li>
             {isLoggedIn && (
               <>
                 <li>
-                  <NavLink activeClassName="active" to="/CA3/jokes">
+                  <NavLink activeClassName="active" to="/exam/jokes">
                     Jokes
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink activeClassName="active" to="/CA3/info/user">
+                  <NavLink activeClassName="active" to="/exam/info/user">
                     Find User
                   </NavLink>
                 </li>
                 {isAdmin && (
                   <li>
-                    <NavLink activeClassName="active" to="/CA3/info/users">
+                    <NavLink activeClassName="active" to="/exam/info/users">
                       All Users
                     </NavLink>
                   </li>
@@ -47,14 +47,14 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
             {isLoggedIn ? (
               <>
                 <li>
-                  <NavLink activeClassName="active" to="/CA3/profile">
+                  <NavLink activeClassName="active" to="/exam/profile">
                     My Profile
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     activeClassName=""
-                    to="/CA3/fanclub/login"
+                    to="/exam/fanclub/login"
                     onClick={performLogout}
                   >
                     Logout
@@ -64,12 +64,12 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
             ) : (
               <>
                 <li>
-                  <NavLink activeClassName="active" to="/CA3/fanclub/login">
+                  <NavLink activeClassName="active" to="/exam/fanclub/login">
                     Login
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink activeClassName="active" to="/CA3/fanclub/register">
+                  <NavLink activeClassName="active" to="/exam/fanclub/register">
                     Join Our Fan Club!
                   </NavLink>
                 </li>

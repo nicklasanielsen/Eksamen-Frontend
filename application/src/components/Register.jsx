@@ -42,7 +42,7 @@ export default function Register({ setLoggedIn }) {
         )
         .then(() => {
           setLoggedIn(true);
-          history.push("/CA3/");
+          history.push("/exam/");
         })
         .catch((err) => {
           if (err.status) {

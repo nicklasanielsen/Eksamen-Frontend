@@ -5,7 +5,7 @@ import facade from "../facade";
 
 export default function Login({ setLoggedIn }) {
   const { state } = useLocation();
-  const pageAfterLogin = state ? state.from : "/CA3/";
+  const pageAfterLogin = state ? state.from : "/exam/";
   const history = useHistory();
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
