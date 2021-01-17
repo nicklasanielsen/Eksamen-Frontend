@@ -73,6 +73,12 @@ function Facade() {
     return loanFacade.loanBook(token, isbn);
   };
 
+  const getLoan = () => {
+    let token = tokenFacade.getToken();
+
+    return loanFacade.getLoan(token);
+  };
+
   return {
     /** Auth related */
     login,
@@ -93,6 +99,7 @@ function Facade() {
     getAllLoans,
     returnBook,
     loanBook,
+    getLoan,
   };
 }
 
