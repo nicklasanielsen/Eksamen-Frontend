@@ -8,7 +8,7 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
     setLoggedIn(false);
     facade.logout();
 
-    return <Redirect to="/fanclub/login" />;
+    return <Redirect to="/membership/login" />;
   };
 
   return (
@@ -18,59 +18,72 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
           <Col md={8}>
             <li>
               <NavLink exact activeClassName="active" to="/exam/">
-                Home
+                Hjem
               </NavLink>
             </li>
             {isLoggedIn && (
               <>
-                <li>
-                  <NavLink activeClassName="active" to="/exam/jokes">
-                    Jokes
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="active" to="/exam/info/user">
-                    Find User
-                  </NavLink>
-                </li>
                 {isAdmin && (
-                  <li>
-                    <NavLink activeClassName="active" to="/exam/info/users">
-                      All Users
-                    </NavLink>
-                  </li>
+                  <>
+                    <li>
+                      <NavLink activeClassName="active" to="/exam/admin/book">
+                        Bog Administrering
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink activeClassName="active" to="/exam/admin/loan">
+                        Låneoversigt
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        activeClassName="active"
+                        to="/exam/admin/resevation"
+                      >
+                        Reservationer
+                      </NavLink>
+                    </li>
+                  </>
                 )}
               </>
             )}
           </Col>
           <Col md={4}>
+            <li>
+              <NavLink activeClassName="active" to="/exam/books">
+                Se vores bøger!
+              </NavLink>
+            </li>
             {isLoggedIn ? (
               <>
                 <li>
                   <NavLink activeClassName="active" to="/exam/profile">
-                    My Profile
+                    Min Profil
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     activeClassName=""
-                    to="/exam/fanclub/login"
+                    to="/exam/membership/login"
                     onClick={performLogout}
                   >
-                    Logout
+                    Log ud
                   </NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <NavLink activeClassName="active" to="/exam/fanclub/login">
-                    Login
+                  <NavLink activeClassName="active" to="/exam/membership/login">
+                    Log på
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink activeClassName="active" to="/exam/fanclub/register">
-                    Join Our Fan Club!
+                  <NavLink
+                    activeClassName="active"
+                    to="/exam/membership/register"
+                  >
+                    Opret konto
                   </NavLink>
                 </li>
               </>

@@ -1,7 +1,7 @@
 export default function NoRoute() {
   return (
     <>
-      <h2>404 - Page Not Found!</h2>
+      <h2>404 - Siden findes ikke!</h2>
     </>
   );
 }

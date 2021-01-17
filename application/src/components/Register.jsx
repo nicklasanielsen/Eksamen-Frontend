@@ -1,8 +1,7 @@
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Col, Row } from "react-bootstrap";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import facade from "../facade";
-import { Col, Row } from "react-bootstrap";
 
 export default function Register({ setLoggedIn }) {
   const history = useHistory();
@@ -29,7 +28,7 @@ export default function Register({ setLoggedIn }) {
       userCredentials.lastname !== ""
     ) {
       if (userCredentials.password !== userCredentials.verifyPassword) {
-        setError("The passwords are not the same.");
+        setError("Adgangskoderne er ikke de samme.");
         return;
       }
 
@@ -49,11 +48,11 @@ export default function Register({ setLoggedIn }) {
             err.fullError.then((e) => setError(e.message));
           }
 
-          setError("An error occurred while processing your request.");
+          setError("En fejl opstod under behandlingen af din anmodning.");
         });
     } else {
       setError(
-        "All fields are mandatory, please verify you have provided all of the requested details."
+        "Alle felter er obligatoriske. Kontroller, at du har angivet alle de ønskede oplysninger."
       );
     }
   };
@@ -67,31 +66,31 @@ export default function Register({ setLoggedIn }) {
 
   return (
     <>
-      <h2>NewBiz Fan Club - Register</h2>
+      <h2>Bibliotekets læseklub - Opret konto</h2>
       <Form onChange={onChange}>
         <Form.Group>
-          <Form.Label>Firstname</Form.Label>
+          <Form.Label>Fornavn</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter your firstname"
+            placeholder="Angiv dit fornavn"
             id="firstname"
           />
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Lastname</Form.Label>
+          <Form.Label>Efternavn</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter your lastname"
+            placeholder="Angiv dit efternavn"
             id="lastname"
           />
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Username</Form.Label>
+          <Form.Label>Brugernavn</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter your username"
+            placeholder="Angiv dit brugernavn"
             id="username"
           />
         </Form.Group>
@@ -99,20 +98,20 @@ export default function Register({ setLoggedIn }) {
         <Row>
           <Col>
             <Form.Group>
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Adgangskode</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Angiv din adgangskode"
                 id="password"
               />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group>
-              <Form.Label>Verify Password</Form.Label>
+              <Form.Label>Bekræft adgangskode</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Verify your password"
+                placeholder="Bekræft din adgangskode"
                 id="verifyPassword"
               />
             </Form.Group>
@@ -122,7 +121,7 @@ export default function Register({ setLoggedIn }) {
         {error && <Alert variant="danger">{error}</Alert>}
 
         <Button variant="primary" type="submit" onClick={performRegistration}>
-          Register New User
+          Opret konto
         </Button>
       </Form>
     </>

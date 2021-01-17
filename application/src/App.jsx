@@ -3,17 +3,18 @@ import { Route, Switch } from "react-router-dom";
 import "./style/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
+import Books from "./components/Books";
 import Header from "./components/Header";
 import NoRoute from "./components/NoRoute";
 import { Container } from "react-bootstrap";
 import PrivateRoute from "./components/PrivateRoute";
-import User from "./components/User";
-import Users from "./components/Users";
-import Jokes from "./components/Jokes";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import AdminToolBooks from "./components/AdminToolBooks";
 import facade from "./facade";
+import AdminToolLoan from "./components/AdminToolLoan";
+import AdminToolResevation from "./components/AdminToolResevation";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(facade.isLoggedIn());
@@ -49,30 +50,33 @@ function App() {
           <Route exact path="/exam/">
             <Home />
           </Route>
+          <Route exact path="/exam/books">
+            <Books />
+          </Route>
           <PrivateRoute
-            path="/exam/info/user"
+            path="/exam/admin/book"
             isLoggedIn={isLoggedIn}
-            component={User}
+            component={AdminToolBooks}
           />
           <PrivateRoute
-            path="/exam/info/users"
+            path="/exam/admin/loan"
             isLoggedIn={isLoggedIn}
-            component={Users}
-          />
-          <PrivateRoute
-            path="/exam/jokes"
-            isLoggedIn={isLoggedIn}
-            component={Jokes}
+            component={AdminToolLoan}
           />
           <PrivateRoute
             path="/exam/profile"
             isLoggedIn={isLoggedIn}
             component={Profile}
           />
-          <Route path="/exam/fanclub/login">
+          <PrivateRoute
+            path="/exam/admin/resevation"
+            isLoggedIn={isLoggedIn}
+            component={AdminToolResevation}
+          />
+          <Route path="/exam/membership/login">
             <Login setLoggedIn={setLoggedIn} />
           </Route>
-          <Route path="/exam/fanclub/register">
+          <Route path="/exam/membership/register">
             <Register setLoggedIn={setLoggedIn} />
           </Route>
           <Route>

@@ -1,7 +1,7 @@
 import authFacade from "./helperFacades/AuthFacade";
-import jokeFacade from "./helperFacades/JokeFacade";
 import tokenFacade from "./helperFacades/TokenFacade";
-import userFacade from "./helperFacades/UserFacade";
+import bookFacade from "./helperFacades/BookFacade";
+import loanFacade from "./helperFacades/LoanFacade";
 
 function Facade() {
   /** Auth related */
@@ -25,28 +25,52 @@ function Facade() {
     return authFacade.isAdmin();
   };
 
-  /** User related */
-  const getProfile = () => {
-    let decodedToken = tokenFacade.getDecodedToken();
-    let username = decodedToken.username;
-
-    return lookupUser(username);
+  /** Book related */
+  const getAllBooks = () => {
+    return bookFacade.getAllBooks();
   };
 
-  const lookupUser = (username) => {
-    let token = tokenFacade.getToken();
-    return userFacade.lookup(username, token);
+  const searchForBook = (searchCriteria) => {
+    return bookFacade.searchForBook(searchCriteria);
   };
 
-  const getAllUsers = () => {
+  /** Admin related */
+  const createBook = (isbn, title, authors, publisher, yearPublished) => {
     let token = tokenFacade.getToken();
-    return userFacade.getAllUsers(token);
+
+    return bookFacade.createBook(
+      isbn,
+      title,
+      authors,
+      publisher,
+      yearPublished,
+      token
+    );
   };
 
-  /** Joke related */
-  const getJokes = () => {
+  const deleteBook = (isbn) => {
     let token = tokenFacade.getToken();
-    return jokeFacade.getRandomJokes(token);
+
+    return bookFacade.deleteBook(token, isbn);
+  };
+
+  /** Loan related */
+  const getAllLoans = () => {
+    let token = tokenFacade.getToken();
+
+    return loanFacade.getAllLoans(token);
+  };
+
+  const returnBook = (id) => {
+    let token = tokenFacade.getToken();
+
+    return loanFacade.returnBook(token, id);
+  };
+
+  const loanBook = (isbn) => {
+    let token = tokenFacade.getToken();
+
+    return loanFacade.loanBook(token, isbn);
   };
 
   return {
@@ -57,13 +81,18 @@ function Facade() {
     register,
     isAdmin,
 
-    /** User related */
-    getProfile,
-    lookupUser,
-    getAllUsers,
+    /** Admin related */
+    createBook,
+    deleteBook,
 
-    /** Joke related */
-    getJokes,
+    /** Book related */
+    getAllBooks,
+    searchForBook,
+
+    /** Loan related */
+    getAllLoans,
+    returnBook,
+    loanBook,
   };
 }
 

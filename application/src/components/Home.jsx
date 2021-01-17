@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <>
-      <h2>Welcome!</h2>
+      <h2>Velkommen til Bibliotekets online læseklub!</h2>
     </>
   );
 }
